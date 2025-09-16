@@ -14,11 +14,19 @@ class UserSeeder extends Seeder
             [
                 'name' => 'Admin User',
                 'email' => 'admin@test.com',
-                'password' => Hash::make('admin123'),
+                'password' => Hash::make('Apple@123'),
                 'is_admin' => 1,
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
+            [
+                'name' =>  'User 1',
+                'email' => 'user1@test.com',
+                'password' => Hash::make('Apple@123'),
+                'is_admin' => 0,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]
         ]);
     }
 }

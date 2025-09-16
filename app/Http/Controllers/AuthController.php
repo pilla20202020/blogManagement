@@ -20,11 +20,18 @@ class AuthController extends Controller
         if (! $token = auth('api')->attempt($credentials)) {
             return $this->errorResponse('Invalid credentials', 401);
         }
-
+        $user = auth('api')->user();
+        $userData = [
+            'id'       => $user->id,
+            'name'     => $user->name,
+            'email'    => $user->email,
+            'is_admin' => $user->is_admin,
+        ];
         return $this->successResponse([
             'access_token' => $token,
             'token_type'   => 'bearer',
             'expires_in'   => auth('api')->factory()->getTTL() * 60,
+            'user'         => $userData,
         ], 'Login successful');
     }
 
