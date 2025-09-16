@@ -8,7 +8,9 @@ use App\Http\Controllers\AuthController;
 
 
 Route::post('/login', [AuthController::class, 'login']);
-
+Route::get('/login', function () {
+    return response('User Not Logged In', 200);
+})->name('login');
 Route::middleware('auth:api')->group(function () {
     Route::get('/me', [AuthController::class, 'me']);
     Route::post('/logout', [AuthController::class, 'logout']);
